@@ -10,4 +10,14 @@ class UserController extends Controller
     {
         return view('users.login');
     }
+
+    public function createSeeker()
+    {
+        return view('users.register-seeker');
+    }
+
+    public function createEmployer()
+    {
+        return view('users.employer-register');
+    }
 }
