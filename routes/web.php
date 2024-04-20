@@ -29,7 +29,7 @@ Route::post('/login', [UserController::class, 'postLogin'])->name('login.post');
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/verify', [DashboardController::class, 'verify'])->name('verification.notice');
 
   
