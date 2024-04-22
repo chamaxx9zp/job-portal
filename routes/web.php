@@ -37,3 +37,5 @@ Route::get('subscribe', [SubscriptionController::class, 'subscribe'])->name('sub
 Route::get('pay/weekly', [SubscriptionController::class, 'initiatePayment'])->name('pay.weekly');
 Route::get('pay/monthly', [SubscriptionController::class, 'initiatePayment'])->name('pay.monthly');
 Route::get('pay/yearly', [SubscriptionController::class, 'initiatePayment'])->name('pay.yearly');
+Route::get('payment/success', [SubscriptionController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('payment/cancel', [SubscriptionController::class, 'cancel'])->name('payment.cancel');
