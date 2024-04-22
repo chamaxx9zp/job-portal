@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,7 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/verify', [DashboardController::class, 'verify'])->name('verification.notice');
 
-  
+Route::get('subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+Route::get('pay/weekly', [SubscriptionController::class, 'initiatePayment'])->name('pay.weekly');
+Route::get('pay/monthly', [SubscriptionController::class, 'initiatePayment'])->name('pay.monthly');
+Route::get('pay/yearly', [SubscriptionController::class, 'initiatePayment'])->name('pay.yearly');
