@@ -88,7 +88,8 @@ class SubscriptionController extends Controller
                     'success_url' => $successURL,
                     'cancel_url' => route('payment.cancel')
                 ]);
-                dd($session);
+                
+                return redirect($session->url);
             }
         } catch (\Exception $e) {
             return $e;
