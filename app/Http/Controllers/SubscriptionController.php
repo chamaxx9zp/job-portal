@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Stripe\Stripe;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use App\Http\Middleware\isEmployer;
@@ -13,7 +14,7 @@ class SubscriptionController extends Controller
     const WEEKLY_AMOUNT = 20;
     const MONTHLY_AMOUNT = 80;
     const YEARLY_AMOUNT = 200;
-    const CURRENCY = 'USD';
+    const CURRENCY = 'LKR';
 
     public function __construct()
     {
@@ -71,6 +72,8 @@ class SubscriptionController extends Controller
                     'billing_ends' => $billingEnds
                 ]);
 
+                // dd($successURL);
+
                 $session = Session::create([
                     'payment_method_types' => ['card'],
                     'line_items' => [[
@@ -88,7 +91,7 @@ class SubscriptionController extends Controller
                     'success_url' => $successURL,
                     'cancel_url' => route('payment.cancel')
                 ]);
-                
+
                 return redirect($session->url);
             }
         } catch (\Exception $e) {
@@ -98,11 +101,21 @@ class SubscriptionController extends Controller
 
     public function paymentSuccess(Request $request)
     {
-        
+        $plan = $request->plan;
+        $billingEnds = $request->billing_ends;
+        User::where('id', auth()->user()->id)->update([
+            'plan' => $plan,
+            'billing_ends' => $billingEnds,
+            'status' => 'paid'
+        ]);
+
+        return redirect()->route('dashboard')->with('success','Payment was successfully processed');
+
     }
 
     public function cancel()
     {
-        
+        return redirect()->route('dashboard')->with('error','Payment was unsuccessful!');
+
     }
 }
