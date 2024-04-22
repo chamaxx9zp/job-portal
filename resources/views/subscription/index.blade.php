@@ -4,9 +4,9 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        {{-- @if(Session::has('message'))
+        @if(Session::has('message'))
             <div class="alert alert-warning">{{Session::get('message')}}</div>
-        @endif --}}
+        @endif
 
         <div class="row">
             <div class="col-md-4 mb-3 mb-sm-0">

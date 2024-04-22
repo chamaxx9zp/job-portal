@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostJobController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubscriptionController;
 
@@ -39,3 +40,5 @@ Route::get('pay/monthly', [SubscriptionController::class, 'initiatePayment'])->n
 Route::get('pay/yearly', [SubscriptionController::class, 'initiatePayment'])->name('pay.yearly');
 Route::get('payment/success', [SubscriptionController::class, 'paymentSuccess'])->name('payment.success');
 Route::get('payment/cancel', [SubscriptionController::class, 'cancel'])->name('payment.cancel');
+
+Route::get('job/create', [PostJobController::class, 'create'])->name('job.create');
