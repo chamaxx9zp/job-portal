@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use App\Http\Middleware\isEmployer;
 use Illuminate\Support\Facades\URL;
+use App\Http\Middleware\donotAllowUserToMakePayment;
 
 class SubscriptionController extends Controller
 {   
@@ -19,6 +20,8 @@ class SubscriptionController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', isEmployer::class]);
+        $this->middleware(['auth', donotAllowUserToMakePayment::class])->except('subscribe');
+
     }
 
     public function subscribe()
