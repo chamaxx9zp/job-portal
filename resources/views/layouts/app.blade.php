@@ -33,9 +33,9 @@
             @if(Auth::check())
               <li class="nav-item">
                 <a class="nav-link" id="logout" href="#">Logout</a>
+                <form id="form-logout" action="{{ route('logout') }}" method="post">@csrf</form>
               </li>
             @endif
-            <form id="form-logout" action="{{ route('logout') }}" method="post">@csrf</form>
           </ul>
         </div>
       </div>
