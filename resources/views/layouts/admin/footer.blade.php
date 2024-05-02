@@ -28,4 +28,4 @@
     $( "#datepicker" ).datepicker();
     $('.summernote').summernote();
   });
-  </script>
+</script>
