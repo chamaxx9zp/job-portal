@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
 
-            <h1>Post a job</h1>
-            <form action="" method="POST" enctype="multipart/form-data">@csrf
+            <h1>Post a job</h1> 
+            <form action="{{route('job.store')}}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="form-group">
                     <label for="title">Feature Image</label>
                     <input type="file" name="feature_image" id="feature_image" class="form-control">
