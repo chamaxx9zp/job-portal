@@ -47,4 +47,33 @@ class PostJobController extends Controller
         $post->save();
         return back();
     }
+
+    public function edit(Listing $listing)
+    {
+        return view('job.edit',compact('listing'));
+    }
+
+    public function update($id, Request $request)
+    {   
+        $this->validate($request, [
+            'title' => 'required|min:5',
+            'feature_image'=> 'mimes:png,jpg,jpeg|max:2048',
+            'description' => 'required|min:10',
+            'roles' => 'required|min:10',
+            'job_type'=>'required',
+            'address'=>'required',
+            'date'=>'required',
+            'salary'=> 'required'
+        ]); 
+
+        if($request->hasFile('feature_image')) {
+            $featureImage = $request->file('feature_image')->store('images', 'public');
+            Listing::find($id)->update(['feature_image' => $featureImage]);
+        }
+
+        Listing::find($id)->update($request->except('feature_image'));
+
+        return back()->with('success', 'Your job post has been successfully updated');
+    }
+    
 }
