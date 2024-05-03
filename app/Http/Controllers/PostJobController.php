@@ -12,6 +12,13 @@ class PostJobController extends Controller
     public function __construct()
     {
         $this->middleware(isPremiumUser::class);
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $jobs = Listing::where('user_id', auth()->user()->id)->get();
+        return view('job.index', compact('jobs'));
     }
 
     public function create()
@@ -74,6 +81,12 @@ class PostJobController extends Controller
         Listing::find($id)->update($request->except('feature_image'));
 
         return back()->with('success', 'Your job post has been successfully updated');
+    }
+
+    public function destroy($id)
+    {
+        Listing::find($id)->delete();
+        return back()->with('success', 'Your job post has been successfully deleted');
     }
     
 }
