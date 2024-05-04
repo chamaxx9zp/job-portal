@@ -6,21 +6,20 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isPremiumUser
+class CheckAuth
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // check wether user is premium or not or trial period is over
+    // check wether the user is logged in or not
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->user()->user_trial > date('Y-m-d')  || $request->user()->billing_ends > date('Y-m-d')) {
+        if(!auth()->check()) {
             return $next($request);
         }
 
-        return redirect()->route('subscribe')->with('message','Please subscribe to post a job');
-
+        return redirect()->to('/');
     }
 }
