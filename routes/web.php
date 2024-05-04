@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\isPremiumUser;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostJobController;
 use App\Http\Controllers\DashboardController;
@@ -18,15 +20,15 @@ use App\Http\Controllers\SubscriptionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/register/seeker', [UserController::class, 'createSeeker'])->name('create.seeker');
+Route::get('/register/seeker', [UserController::class, 'createSeeker'])->name('create.seeker')->middleware(CheckAuth::class);
 Route::post('/register/seeker', [UserController::class, 'storeSeeker'])->name('store.seeker');
-Route::get('/register/employer', [UserController::class, 'createEmployer'])->name('create.employer');
+Route::get('/register/employer', [UserController::class, 'createEmployer'])->name('create.employer')->middleware(CheckAuth::class);
 Route::post('/register/employer', [UserController::class, 'storeEmployer'])->name('store.employer');
 
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware(CheckAuth::class);
 Route::post('/login', [UserController::class, 'postLogin'])->name('login.post');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -35,7 +37,7 @@ Route::post('user/profile', [UserController::class, 'update'])->name('user.updat
 Route::get('user/profile/seeker', [UserController::class, 'seekerProfile'])->name('seeker.profile')
 ->middleware(['auth','verified']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(isPremiumUser::class);
 Route::get('/verify', [DashboardController::class, 'verify'])->name('verification.notice');
 
 Route::get('subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
