@@ -28,8 +28,12 @@ Route::post('/register/employer', [UserController::class, 'storeEmployer'])->nam
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'postLogin'])->name('login.post');
-
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile')->middleware('auth');
+Route::post('user/profile', [UserController::class, 'update'])->name('user.update.profile')->middleware('auth');
+Route::get('user/profile/seeker', [UserController::class, 'seekerProfile'])->name('seeker.profile')
+->middleware(['auth','verified']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/verify', [DashboardController::class, 'verify'])->name('verification.notice');
