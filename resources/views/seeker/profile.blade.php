@@ -60,7 +60,7 @@
     <div class="row justify-content-center">
         <h2>Update your resume</h2>
 
-        <form action="" method="post" enctype="multipart/form-data">@csrf
+        <form action="{{route('upload.resume')}}" method="post" enctype="multipart/form-data">@csrf
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="resume">Upload a resume</label>

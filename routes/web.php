@@ -36,6 +36,7 @@ Route::get('user/profile', [UserController::class, 'profile'])->name('user.profi
 Route::post('user/profile', [UserController::class, 'update'])->name('user.update.profile')->middleware('auth');
 Route::get('user/profile/seeker', [UserController::class, 'seekerProfile'])->name('seeker.profile')->middleware('auth');
 Route::post('user/password', [UserController::class, 'changePassword'])->name('user.password')->middleware('auth');
+Route::post('upload/resume', [UserController::class, 'uploadResume'])->name('upload.resume')->middleware('auth');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(isPremiumUser::class);
