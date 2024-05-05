@@ -19,9 +19,11 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
+            @if(Auth::check())
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
             </li>
+            @endif
             @if(!Auth::check())
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('login')  }}">Login</a>

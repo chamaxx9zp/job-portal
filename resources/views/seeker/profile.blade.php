@@ -36,7 +36,7 @@
     <div class="row justify-content-center">
         <h2>Change your password</h2>
 
-        <form action="" method="post">@csrf
+        <form action="{{route('user.password')}}" method="post">@csrf
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="current_password">Your current password</label>
