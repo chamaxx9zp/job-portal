@@ -20,7 +20,7 @@
                                     <a class="nav-link" href="{{route('job.index')}}">Your jobs</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{route('applicants.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Applicants
                             </a>
