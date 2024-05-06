@@ -21,4 +21,16 @@ class Listing extends Model
         'feature_image',
         'slug'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'listing_user', 'listing_id', 'user_id')
+        ->withPivot('shortlisted')
+        ->withTimestamps();
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }
