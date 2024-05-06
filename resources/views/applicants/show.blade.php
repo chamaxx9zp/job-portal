@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-auto align-self-center">
-                    <form action="" method="post">@csrf
+                    <form action="{{route('applicants.shortlist',[$listing->id,$user->id])}}" method="post">@csrf
                         <a href="{{Storage::url($user->resume)}}" class="btn btn-primary" target="_blank">Download Resume</a>
                         <button type="submit" class="{{$user->pivot->shortlisted ? 'btn btn-success' : 'btn btn-dark'}}">
                             {{$user->pivot->shortlisted ? 'Shortlisted' : 'Shortlist'}}

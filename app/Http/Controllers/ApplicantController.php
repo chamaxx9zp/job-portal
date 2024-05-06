@@ -23,4 +23,17 @@ class ApplicantController extends Controller
         return view('applicants.show', compact('listing'));
 
     }
+
+    public function shortlist($listingId, $userId)
+    {
+        $listing = Listing::find($listingId);
+        // $user = User::find($userId);
+        if($listing) {
+            $listing->users()->updateExistingPivot($userId,['shortlisted' => true]);
+
+            return back()->with('success','User is shortlisted successfully');
+        }
+
+        return back();
+    }
 }
