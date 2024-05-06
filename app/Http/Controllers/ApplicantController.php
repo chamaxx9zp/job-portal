@@ -13,4 +13,14 @@ class ApplicantController extends Controller
         return view('applicants.index', compact('listings'));
 
     }
+
+    public function show(Listing $listing)
+    {
+        // $this->authorize('view', $listing);
+
+        $listing = Listing::with('users')->where('slug',$listing->slug)->first();
+
+        return view('applicants.show', compact('listing'));
+
+    }
 }

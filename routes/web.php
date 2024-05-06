@@ -58,3 +58,5 @@ Route::get('job', [PostJobController::class, 'index'])->name('job.index');
 Route::delete('job/{id}/delete', [PostJobController::class, 'destroy'])->name('job.delete'); 
 
 Route::get('applicants' ,[ApplicantController::class, 'index'])->name('applicants.index');
+Route::get('applicants/{listing:slug}' ,[ApplicantController::class, 'show'])->name('applicants.show');
+
