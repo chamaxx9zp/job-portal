@@ -52,7 +52,7 @@
                         <small class="ml-1">{{$job->address}}</small>
                     </div>
                     <div class="d-flex justify-content-between mt-3"> <span>Rs {{number_format($job->salary)}}</span>
-                        <a href=""><button class="btn btn-dark">Apply Now</button> </a>
+                        <a href="{{route('job.show',[$job->slug])}}"><button class="btn btn-dark">Apply Now</button> </a>
                     </div>
                 </div>
             </div>

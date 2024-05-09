@@ -22,6 +22,8 @@ use App\Http\Controllers\SubscriptionController;
 */
 
 Route::get('/',[JoblistingController::class,'index'])->name('listing.index');
+Route::get('/jobs/{listing:slug}',[JoblistingController::class,'show'])->name('job.show');
+
 
 
 Route::get('/register/seeker', [UserController::class, 'createSeeker'])->name('create.seeker')->middleware(CheckAuth::class);

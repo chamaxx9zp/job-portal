@@ -14,4 +14,9 @@ class JoblistingController extends Controller
         // dd($jobs);
         return view('home',compact('jobs'));
     }
+
+    public function show(Listing $listing)
+    {
+        return view('show', compact('listing'));
+    }
 }
