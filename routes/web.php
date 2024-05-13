@@ -23,6 +23,9 @@ use App\Http\Controllers\SubscriptionController;
 */
 
 Route::get('/',[JoblistingController::class,'index'])->name('listing.index');
+
+Route::get('/company/{id}',[JoblistingController::class,'company'])->name('company');
+
 Route::get('/jobs/{listing:slug}',[JoblistingController::class,'show'])->name('job.show');
 
 Route::post('/resume/upload',[FileUploadController::class, 'store'])->middleware('auth');

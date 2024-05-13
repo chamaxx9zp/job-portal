@@ -8,10 +8,13 @@
                 <img src="{{Storage::url($listing->feature_image)}}" class="card-img-top" alt="Cover Image" style="height: 250px; object-fit: cover;">
                 <div class="card-body">
             
-                    {{-- <a href="{{route('company',[$listing->profile->id])}}">
-                        <img src="{{Storage::url($listing->profile->profile_pic)}}" width="60" class="rounded-circle">
-                    </a> --}}
-                    <b>{{$listing->profile->name}}</b>
+                    <a href="{{route('company',[$listing->profile->id])}}">
+                        <img src="{{Storage::url($listing->profile?->profile_pic)}}" width="60" class="rounded-circle">
+                    </a>
+                    <a href="{{route('company',[$listing->profile->id])}}" class="">
+                        <b>{{$listing->profile?->name}}</b> 
+                    </a>
+                   
                     <h2 class="card-title">{{$listing->title}}</h2>
                     @if(Session::has('success'))
                     <div class="alert alert-success">

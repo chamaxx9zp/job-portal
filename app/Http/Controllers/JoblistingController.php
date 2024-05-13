@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 
@@ -47,5 +48,12 @@ class JoblistingController extends Controller
     public function show(Listing $listing)
     {
         return view('show', compact('listing'));
+    }
+
+    public function company($id)
+    {
+        $company =  User::with('jobs')->where('id', $id)->where('user_type','employer')->first();
+
+        return view('company', compact('company'));
     }
 }
