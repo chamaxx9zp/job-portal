@@ -36,7 +36,7 @@
                   <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="">Job applied</a>
+                  <a class="nav-link active" aria-current="page" href="{{route('job.applied')}}">Job applied</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="logout" href="#">Logout</a>
