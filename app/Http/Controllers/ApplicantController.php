@@ -42,6 +42,6 @@ class ApplicantController extends Controller
         $user = auth()->user();
         $user->listings()->syncWithoutDetaching($listingId);
         
-        return back()->with('success','Youe application was successfully submited');
+        return back()->with('success','Your application was successfully submited');
     }
 }

@@ -21,9 +21,35 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             @if(Auth::check())
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
+           
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @if(auth()->user()->profile_pic)
+                <img src="{{Storage::url( auth()->user()->profile_pic)}}" width="40" class="rounded-circle">
+                @else 
+                <img src="https://placehold.co/400" class="rounded-circle" width="40">
+                @endif
+              </a>
+              <ul class="dropdown-menu">
+                @if(auth()->user()->user_type === 'seeker')
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="">Job applied</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="logout" href="#">Logout</a>
+                  <form id="form-logout" action="{{ route('logout') }}" method="post">@csrf</form>
+                </li>
+                @else 
+                <li class="nav-item">
+                  <a class="nav-link" id="" href="{{route('dashboard')}}">Dashboard</a>
+                </li>
+                @endif
+              </ul>
             </li>
+
             @endif
             @if(!Auth::check())
               <li class="nav-item">
@@ -34,12 +60,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('create.employer') }}">Employer</a>
-              </li>
-            @endif
-            @if(Auth::check())
-              <li class="nav-item">
-                <a class="nav-link" id="logout" href="#">Logout</a>
-                <form id="form-logout" action="{{ route('logout') }}" method="post">@csrf</form>
               </li>
             @endif
           </ul>
