@@ -31,7 +31,7 @@
                     <p class="card-text mt-4">Application closing date: {{$listing->application_close_date}}</p>
                     @if(Auth::check())
                     @if(auth()->user()->resume)
-                    <form action="" method="POST">@csrf
+                    <form action="{{route('applicantion.submit',[$listing->id])}}" method="POST">@csrf
                         <button href="#" class="btn btn-dark btn-lg mt-3">Apply Now</button>
                     </form>
                     @else
@@ -48,7 +48,7 @@
 
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <form action="" method="POST">@csrf
+                        <form action="{{route('applicantion.submit',[$listing->id])}}" method="POST">@csrf
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

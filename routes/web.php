@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostJobController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\JoblistingController;
 use App\Http\Controllers\SubscriptionController;
 
@@ -24,7 +25,7 @@ use App\Http\Controllers\SubscriptionController;
 Route::get('/',[JoblistingController::class,'index'])->name('listing.index');
 Route::get('/jobs/{listing:slug}',[JoblistingController::class,'show'])->name('job.show');
 
-
+Route::post('/resume/upload',[FileUploadController::class, 'store'])->middleware('auth');
 
 Route::get('/register/seeker', [UserController::class, 'createSeeker'])->name('create.seeker')->middleware(CheckAuth::class);
 Route::post('/register/seeker', [UserController::class, 'storeSeeker'])->name('store.seeker');
@@ -62,3 +63,4 @@ Route::delete('job/{id}/delete', [PostJobController::class, 'destroy'])->name('j
 Route::get('applicants' ,[ApplicantController::class, 'index'])->name('applicants.index');
 Route::get('applicants/{listing:slug}' ,[ApplicantController::class, 'show'])->name('applicants.show');
 Route::post('shortlist/{listingId}/{userId}', [ApplicantController::class, 'shortlist'])->name('applicants.shortlist');
+Route::post('/applicantion/{listingId}/submit', [ApplicantController::class,'apply'])->name('applicantion.submit');
