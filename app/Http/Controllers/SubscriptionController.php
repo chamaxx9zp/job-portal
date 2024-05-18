@@ -12,9 +12,9 @@ use App\Http\Middleware\donotAllowUserToMakePayment;
 
 class SubscriptionController extends Controller
 {   
-    const WEEKLY_AMOUNT = 20;
-    const MONTHLY_AMOUNT = 80;
-    const YEARLY_AMOUNT = 200;
+    const WEEKLY_AMOUNT = 50;
+    const MONTHLY_AMOUNT = 150;
+    const YEARLY_AMOUNT = 1490;
     const CURRENCY = 'LKR';
 
     public function __construct()
