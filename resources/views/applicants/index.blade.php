@@ -22,6 +22,7 @@
                     </thead>
   
                     <tbody>
+                        
                         @foreach($listings as $listing)
                         <tr>
                             <td>{{$listing->title}}</td>

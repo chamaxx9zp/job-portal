@@ -35,7 +35,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$job->title}}</h5>
           <p class="card-text">Location:{{$job->address}} </p>
-          <p class="card-text">Salary: ${{number_format($job->salary,)}} per year</p>
+          <p class="card-text">Salary: Rs {{number_format($job->salary,)}} per year</p>
           <a href="{{route('job.show',[$job->slug])}}" class="btn btn-dark">View</a>
         </div>
       </div>   

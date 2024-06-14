@@ -22,7 +22,7 @@
                     </div>
                     @endif
                     <span class="badge bg-primary">{{$listing->job_type}}</span>
-                    <p>Salary: ${{number_format($listing->salary,2)}}</p>
+                    <p>Salary: Rs {{number_format($listing->salary,2)}}</p>
                     Address: {{$listing->address}} 
 
                     <h4 class="mt-4">Description</h4>

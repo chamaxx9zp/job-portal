@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <section class="centered-content">
+    <section class="text-center">
         <p class="lead"><a href="/login"> <button class="btn btn-dark" style="">Sign in</button></a> or Register
             to manage your  profile, start applying jobs.</p>
     </section>

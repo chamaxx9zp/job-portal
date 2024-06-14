@@ -31,6 +31,8 @@ class ApplicantController extends Controller
         if($listing) {
             $listing->users()->updateExistingPivot($userId,['shortlisted' => true]);
 
+            
+
             return back()->with('success','User is shortlisted successfully');
         }
 
