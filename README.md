@@ -1,3 +1,85 @@
+
+## Setup Instructions
+Follow these steps to set up the Laravel project on your local machine.
+
+## Getting Started
+
+1. Clone the repository locally and switch to the development branch:
+
+```bash
+  git clone https://github.com/chamaxx9zp/job-portal.git
+    or
+  gh repo clone chamaxx9zp/job-portal
+```
+
+2. Install Composer Dependencies:
+
+```bash
+  composer install
+```
+
+3. Set Up Environment File:
+
+- Copy the .env.example file to create your .env file:
+
+```bash
+    DB_CONNECTION=sqlite
+    # DB_HOST=127.0.0.1
+    # DB_PORT=3306
+    # DB_DATABASE=laravel
+    # DB_USERNAME=root
+    # DB_PASSWORD=
+
+    STRIPE_SECRET_KEY=tobemodified
+```
+Update the .env file with your specific environment configurations, such as database credentials and Stripe API keys for the payment gateway.
+
+- Go to Stripe Dashboard and create a new Stripe account by filling in the required information.
+
+- After creating your account, log in to the Stripe Dashboard.
+
+- Navigate to the API Keys section under the Developers tab.
+
+- Retrieve your Secret Key by clicking on "Reveal live key."
+
+- Copy this key and paste it into your .env file as the value for STRIPE_SECRET_KEY:
+
+4. Generate Application Key:
+
+```bash
+    php artisan key:generate
+```
+5. Set Up Database:
+
+This project uses an SQLite database, which is a file-based database, requiring minimal setup. Set up the database tables by running:
+
+```bash
+    php artisan migrate
+```
+
+6. Install Node.js Dependencies:
+
+```bash
+    npm install
+```
+
+7. Run the Development Server:
+```bash
+    php artisan serve
+```
+The project should now be running at http://localhost:8000. 
+
+
+## Prerequisites
+
+Before setup locally, you need to have the following installed:
+
+- Node.js v18.18.2 and npm: 9.8.1 You can download these from the official [Node.js website](https://nodejs.org/).
+- Composer version 2.7.1
+- PHP version 8.2.22 
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -27,39 +109,8 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
